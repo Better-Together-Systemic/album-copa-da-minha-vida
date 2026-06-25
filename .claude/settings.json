@@ -1,7 +1,25 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(awk '{ print length, NR }' index.html)",
+      "Bash(sort -t'\"' -k2 -n)",
+      "Bash(python3 -)",
+      "Bash(awk 'length > 5000 {print NR}' index.html)",
+      "Bash(node --check /tmp_script_check.js)",
+      "Bash(python3 - /private/tmp/claude-502/-Users-brunodev-GitHub-album-copa-da-minha-vida/52e5872e-3a81-43e3-a0d6-f1aa804521d4/scratchpad)",
+      "Bash(node --check /private/tmp/claude-502/-Users-brunodev-GitHub-album-copa-da-minha-vida/52e5872e-3a81-43e3-a0d6-f1aa804521d4/scratchpad/script_check.js)",
+      "Bash(npm ls *)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(node test_pdf.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js --max-time 10)",
+      "Bash(curl -s -D - -o /dev/null \"https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js\" --max-time 10)",
+      "Bash(curl -s \"https://api.cdnjs.com/libraries/jspdf\" --max-time 10)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('version'\\)\\); print\\(d.get\\('filename'\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js\" --max-time 10)"
     ]
   }
 }
