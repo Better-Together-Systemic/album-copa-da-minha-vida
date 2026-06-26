@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Jogo Começa — Copa da Minha Vida 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f3ee;
+    color: #1a1a1a;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .topo {
+    background: #0d1b3e;
+    padding: 36px 24px 28px;
+    text-align: center;
+  }
+
+  .topo-badge {
+    display: inline-block;
+    background: rgba(255,215,0,0.2);
+    color: #ffd700;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,215,0,0.35);
+    margin-bottom: 18px;
+  }
+
+  .topo h1 {
+    font-size: 32px;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .topo h1 span {
+    color: #e83e8c;
+    display: block;
+    font-style: italic;
+    font-size: 26px;
+  }
+
+  .topo p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .coracao {
+    color: #e83e8c;
+    font-size: 22px;
+    margin-top: 14px;
+    letter-spacing: 6px;
+  }
+
+  .conteudo {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 20px 48px;
+  }
+
+  .secao {
+    margin-top: 36px;
+  }
+
+  .secao-titulo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0d1b3e;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #e83e8c;
+  }
+
+  .texto {
+    font-size: 18px;
+    color: #2c2c2a;
+    margin-bottom: 12px;
+    line-height: 1.75;
+  }
+
+  .destaque {
+    font-weight: bold;
+    color: #0d1b3e;
+  }
+
+  .lista {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+  }
+
+  .lista li {
+    font-size: 18px;
+    color: #2c2c2a;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-left: 5px solid #1d9e75;
+    line-height: 1.6;
+  }
+
+  .caixa {
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 16px 0;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .caixa-rosa {
+    background: #fbeaf0;
+    border-left: 5px solid #c0295a;
+    color: #3a0a1a;
+  }
+
+  .caixa-teal {
+    background: #e1f5ee;
+    border-left: 5px solid #0f6e56;
+    color: #052e20;
+  }
+
+  .caixa-ouro {
+    background: #faeeda;
+    border-left: 5px solid #b8860b;
+    color: #3a2800;
+  }
+
+  .caixa-titulo {
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .caixa-rosa .caixa-titulo { color: #c0295a; }
+  .caixa-teal .caixa-titulo { color: #0f6e56; }
+  .caixa-ouro .caixa-titulo { color: #b8860b; }
+
+  .etapa {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1.5px solid #e0ddd5;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+
+  .etapa-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .etapa-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .etapa-info { flex: 1; }
+
+  .etapa-paginas {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888780;
+    margin-bottom: 2px;
+  }
+
+  .etapa-nome {
+    font-size: 17px;
+    font-weight: bold;
+    color: #0d1b3e;
+    line-height: 1.3;
+  }
+
+  .etapa-seta {
+    font-size: 22px;
+    color: #aaa;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+
+  .etapa-corpo {
+    display: none;
+    padding: 0 18px 18px;
+    border-top: 1px solid #ece9e0;
+  }
+
+  .etapa-corpo.aberto { display: block; }
+  .etapa-seta.aberta { transform: rotate(180deg); }
+
+  .etapa-corpo p {
+    font-size: 17px;
+    color: #2c2c2a;
+    margin-top: 14px;
+    line-height: 1.7;
+  }
+
+  .passo {
+    background: #f5f3ee;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    font-size: 17px;
+    color: #2c2c2a;
+    line-height: 1.6;
+  }
+
+  .passo strong {
+    display: block;
+    color: #0d1b3e;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .linha {
+    border: none;
+    border-top: 2px solid #e0ddd5;
+    margin: 32px 0;
+  }
+
+  .encerramento {
+    background: #0d1b3e;
+    border-radius: 14px;
+    padding: 28px 22px;
+    text-align: center;
+    margin-top: 36px;
+  }
+
+  .encerramento p {
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .encerramento p strong {
+    color: #ffd700;
+    font-style: normal;
+  }
+
+  .encerramento .assinatura {
+    color: rgba(255,255,255,0.45);
+    font-size: 14px;
+    font-style: normal;
+    margin-top: 18px;
+  }
+
+  .btn-album {
+    display: block;
+    background: #e83e8c;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px 24px;
+    border-radius: 50px;
+    border: none;
+    margin: 28px 0 0;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .num-rosa { background: #fbeaf0; color: #c0295a; }
+  .num-teal { background: #e1f5ee; color: #0f6e56; }
+  .num-ouro { background: #faeeda; color: #b8860b; }
+  .num-azul { background: #e6f1fb; color: #185fa5; }
+  .num-roxa { background: #eeedfe; color: #3c3489; }
+  .num-coral { background: #faece7; color: #993c1d; }
+
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <div class="topo-badge">Copa da Minha Vida 2026</div>
+  <h1>O Jogo Começa
+    <span>quando você decide entrar</span>
+  </h1>
+  <p>Seu álbum está aqui. Esperando por você.</p>
+  <div class="coracao">♡ ♡ ♡</div>
+</div>
+
+<div class="conteudo">
+
+  <div class="secao">
+    <div class="secao-titulo">Você não estava no encontro ao vivo</div>
+    <p class="texto">Tudo bem. O seu lugar estava guardado.</p>
+    <p class="texto">Este álbum foi feito para você percorrer sozinha, no seu ritmo, com toda a calma que quiser.</p>
+    <p class="texto"><span class="destaque">Não existe resposta certa. Existe a sua.</span></p>
+  </div>
+
+  <hr class="linha">
+
+  <div class="secao">
+    <div class="secao-titulo">Antes de começar, separe</div>
+    <ul class="lista">
+      <li>📱 &nbsp;O celular carregado</li>
+      <li>📸 &nbsp;Algumas fotos suas — de hoje e de quando era mais jovem</li>
+      <li>🤫 &nbsp;Um lugar tranquilo, sem barulho, por uns 30 minutinhos</li>
+      <li>💛 &nbsp;Disposição — não precisa estar perfeita para começar</li>
+    </ul>
+  </div>
+
+  <hr class="linha">
+
+  <div class="secao">
+    <div class="secao-titulo">Como funciona</div>
+
+    <div class="caixa caixa-teal">
+      <div class="caixa-titulo">Este álbum tem 18 páginas</div>
+      Cada página tem um espaço para você escrever ou colocar uma foto. Você não precisa fazer tudo de uma vez. Pode parar, descansar e voltar quando quiser. O álbum salva tudo sozinho no seu celular.
+    </div>
+
+    <div class="caixa caixa-ouro">
+      <div class="caixa-titulo">Como colocar uma foto</div>
+      Toque no quadradinho pontilhado.<br>
+      O celular abre sua galeria de fotos.<br>
+      Escolha a foto que quiser.<br>
+      Pronto — ela entra no álbum sozinha.
+    </div>
+
+    <div class="caixa caixa-rosa">
+      <div class="caixa-titulo">Para salvar seu álbum</div>
+      Quando terminar, toque em <strong>Salvar</strong> no final da página. Seu álbum vira um arquivo que você pode guardar ou imprimir.
+    </div>
+  </div>
+
+  <hr class="linha">
+
+  <div class="secao">
+    <div class="secao-titulo">Página por página — toque para abrir</div>
+
+    <div class="etapa">
+      <div class="etapa-cabecalho" onclick="abre(this)">
+        <div class="etapa-num num-rosa">1</div>
+        <div class="etapa-info">
+          <div class="etapa-paginas">Páginas 1, 2 e 3</div>
+          <div class="etapa-nome">Quem é você nesse jogo</div>
+        </div>
+        <div class="etapa-seta">▾</div>
+      </div>
+      <div class="etapa-corpo">
+        <p>Você vai escrever seu nome, uma palavra que te dá força e o maior medo que quer vencer.</p>
+        <p>Vai colocar uma foto sua de hoje — não precisa ser foto de rede social. Qualquer foto verdadeira serve.</p>
+        <div class="passo"><strong>Se travar na palavra de poder:</strong> Pense: que palavra, repetida todo dia de manhã, mudaria o seu dia? Coragem? Paz? Fé? Escreva a primeira que vier.</div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-cabecalho" onclick="abre(this)">
+        <div class="etapa-num num-teal">2</div>
+        <div class="etapa-info">
+          <div class="etapa-paginas">Páginas 4, 5 e 6</div>
+          <div class="etapa-nome">Suas partes de volta</div>
+        </div>
+        <div class="etapa-seta">▾</div>
+      </div>
+      <div class="etapa-corpo">
+        <p>Cada figurinha representa uma parte sua: coragem, voz, cura, pertencimento, ancestralidade, prosperidade, liderança, movimento e criança interior.</p>
+        <p>Para cada uma, você escolhe uma foto ou imagem que represente aquilo para você. Pode ser uma flor, o mar, uma foto da sua mãe, qualquer coisa que fale ao seu coração.</p>
+        <div class="passo"><strong>Se não souber qual imagem escolher:</strong> Qual foi a primeira imagem que veio na sua cabeça quando leu o nome? É essa. Confie.</div>
+        <p>As <strong>Figurinhas Raras</strong> (página 6) são duas: Merecimento e Liderança Emocional. Essas não se compram. Se conquistam.</p>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-cabecalho" onclick="abre(this)">
+        <div class="etapa-num num-ouro">3</div>
+        <div class="etapa-info">
+          <div class="etapa-paginas">Páginas 7 e 8</div>
+          <div class="etapa-nome">Você inteira</div>
+        </div>
+        <div class="etapa-seta">▾</div>
+      </div>
+      <div class="etapa-corpo">
+        <p>Oito versões suas: corajosa, amorosa, livre, próspera, criança, ancestral, líder e inteira. Para cada uma, uma foto ou imagem.</p>
+        <p>Depois, você cria o <strong>Escudo da sua vida</strong> — com quatro frases: seu maior poder, sua origem, o que te move e o seu destino.</p>
+        <div class="passo"><strong>Lembre-se:</strong> Você não precisa se completar. Você já é inteira. Essas páginas são para reconhecer o que já existe em você.</div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-cabecalho" onclick="abre(this)">
+        <div class="etapa-num num-azul">4</div>
+        <div class="etapa-info">
+          <div class="etapa-paginas">Páginas 9 e 10</div>
+          <div class="etapa-nome">O que mudou em você</div>
+        </div>
+        <div class="etapa-seta">▾</div>
+      </div>
+      <div class="etapa-corpo">
+        <p>A página 9 tem duas colunas: <strong>Antes</strong> e <strong>Depois</strong>. Escreva como você estava antes e como está agora em quatro áreas: confiança, voz, amor próprio e vida.</p>
+        <p>Pode escrever uma palavra só em cada espaço. Não precisa ser texto longo.</p>
+        <p>Na página 10, você vai olhar para seis coisas que ainda atrapalham: medo, culpa, autossabotagem, desconexão, padrões antigos e falta de pertencimento. Dê uma nota de 1 a 10 para cada.</p>
+        <div class="passo"><strong>Isso não é para se julgar.</strong> É só para dar nome ao que existe. Dar nome já tira o poder.</div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-cabecalho" onclick="abre(this)">
+        <div class="etapa-num num-roxa">5</div>
+        <div class="etapa-info">
+          <div class="etapa-paginas">Páginas 11 e 12</div>
+          <div class="etapa-nome">O que você promete para si mesma</div>
+        </div>
+        <div class="etapa-seta">▾</div>
+      </div>
+      <div class="etapa-corpo">
+        <p>Sete promessas — não para os outros. Para você.</p>
+        <p>Para ajudar, use estes começos de frase:</p>
+        <div class="passo">Eu prometo parar de…<br>Eu prometo começar a…<br>Eu prometo me permitir…<br>Eu prometo dizer não para…<br>Eu prometo dizer sim para…<br>Eu prometo cuidar de…<br>Eu prometo lembrar que eu sou…</div>
+        <p>A página 12 é a mais especial: você escreve uma <strong>carta para você mesma</strong>. Pode começar com "Querida eu," e escrever o que vier. Não precisa ser bonita. Precisa ser verdadeira.</p>
+        <div class="passo"><strong>Se chorar, pode.</strong> O álbum está aqui para isso mesmo.</div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-cabecalho" onclick="abre(this)">
+        <div class="etapa-num num-coral">6</div>
+        <div class="etapa-info">
+          <div class="etapa-paginas">Páginas 13 a 18</div>
+          <div class="etapa-nome">Sua vitória</div>
+        </div>
+        <div class="etapa-seta">▾</div>
+      </div>
+      <div class="etapa-corpo">
+        <p>A página 13 tem 12 espaços para fotos de pessoas que te inspiram — família, amigas, pessoas que você admira. Não precisa preencher todos. Deixe espaço para quem ainda vai chegar.</p>
+        <p>A página 14 é para você escrever o momento em que se tornou campeã de si mesma. Pode ser algo que já aconteceu — ou pode ser hoje, agora, ao terminar este álbum.</p>
+        <div class="passo"><strong>Diga em voz alta:</strong> "EU POSSO. EU CONSIGO." De novo, mais forte. Esse é o apito final.</div>
+        <p>As últimas páginas são para sentir. Pode guardar a caneta e só ler.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="linha">
+
+  <div class="secao">
+    <div class="secao-titulo">Se travar em alguma parte</div>
+    <ul class="lista">
+      <li>Não consegue pensar numa foto? Use qualquer imagem bonita que te agrada.</li>
+      <li>Não sabe o que escrever? Escreva o que vier primeiro na cabeça.</li>
+      <li>Achou difícil demais? Pule e volte depois. O álbum fica guardado.</li>
+      <li>Se chorar, pode. O álbum está aqui para isso.</li>
+    </ul>
+  </div>
+
+  <div class="encerramento">
+    <p>"Você não vai preencher um álbum.<br><strong>Você vai se reencontrar, página por página.</strong>"</p>
+    <p>Esse álbum fica com você para sempre.<br>Sempre que duvidar de quem é, abra ele.</p>
+    <div class="coracao" style="margin-top:16px;">♡ ♡ ♡</div>
+    <p class="assinatura">Copa da Minha Vida™ 2026 · Eliane Simões & Liliana Pinheiro da Rosa</p>
+    <a class="btn-album" href="https://albumcopadaminhavida.vercel.app/" target="_blank">Abrir meu álbum →</a>
+  </div>
+
+</div>
+
+<script>
+function abre(cabecalho) {
+  var corpo = cabecalho.nextElementSibling;
+  var seta = cabecalho.querySelector('.etapa-seta');
+  var aberto = corpo.classList.contains('aberto');
+  corpo.classList.toggle('aberto', !aberto);
+  seta.classList.toggle('aberta', !aberto);
+}
+</script>
+
+</body>
+</html>

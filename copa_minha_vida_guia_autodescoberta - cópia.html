@@ -1,0 +1,669 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { font-family: 'Inter', sans-serif; }
+
+  .guia-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0 3rem;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a2f6e 60%, #0a4d4a 100%);
+    border-radius: 16px;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(218,165,32,0.12);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(220,20,100,0.1);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(218,165,32,0.25);
+    color: #ffd700;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(218,165,32,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero h1 span {
+    color: #ffd700;
+    font-style: italic;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-style: italic;
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .hero-coracoes {
+    font-size: 22px;
+    opacity: 0.6;
+    letter-spacing: 4px;
+  }
+
+  .intro-card {
+    background: var(--surface-1);
+    border: 0.5px solid var(--border);
+    border-left: 4px solid #e83e8c;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-card p {
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    font-size: 15px;
+  }
+
+  .intro-card p:last-child { margin-bottom: 0; }
+
+  .intro-card strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-rosa { background: #e83e8c; }
+  .dot-teal { background: #1d9e75; }
+  .dot-ouro { background: #daa520; }
+  .dot-azul { background: #1a3a8f; }
+
+  .etapa-card {
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .etapa-card:hover { border-color: var(--border-strong); }
+
+  .etapa-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .etapa-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .num-rosa { background: #fbeaf0; color: #993556; }
+  .num-teal { background: #e1f5ee; color: #0f6e56; }
+  .num-ouro { background: #faeeda; color: #854f0b; }
+  .num-azul { background: #e6f1fb; color: #185fa5; }
+  .num-roxa { background: #eeedfe; color: #3c3489; }
+  .num-coral { background: #faece7; color: #993c1d; }
+
+  .etapa-info { flex: 1; }
+
+  .etapa-paginas {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+
+  .etapa-titulo {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .etapa-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .etapa-expand {
+    color: var(--text-muted);
+    font-size: 18px;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    padding-top: 2px;
+  }
+
+  .etapa-detail {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .etapa-detail.open { display: block; }
+
+  .etapa-detail p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    line-height: 1.65;
+  }
+
+  .pergunta-box {
+    background: var(--bg-accent, #e6f1fb);
+    border-left: 3px solid #185fa5;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 0.5rem 0;
+    font-size: 13px;
+    color: var(--text-primary);
+    font-style: italic;
+  }
+
+  .dica-box {
+    background: var(--bg-success, #eaf3de);
+    border-left: 3px solid #3b6d11;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 0.5rem 0;
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+
+  .dica-box strong { color: #3b6d11; font-weight: 600; }
+
+  .aviso-box {
+    background: #fbeaf0;
+    border: 0.5px solid #f4c0d1;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .aviso-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .aviso-text {
+    font-size: 13.5px;
+    color: #72243e;
+    line-height: 1.6;
+  }
+
+  .aviso-text strong { font-weight: 600; }
+
+  .ritual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 1rem 0;
+  }
+
+  .ritual-item {
+    background: var(--surface-1);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .ritual-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .ritual-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .ritual-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .encerramento {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a2f6e 100%);
+    border-radius: 14px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .encerramento p {
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .encerramento p strong {
+    color: #ffd700;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .btn-acessar {
+    display: inline-block;
+    background: #e83e8c;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .btn-acessar:hover { opacity: 0.88; }
+
+  .progresso-wrap {
+    background: var(--surface-1);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .progresso-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .progresso-bar-bg {
+    background: var(--border);
+    border-radius: 6px;
+    height: 8px;
+    overflow: hidden;
+  }
+
+  .progresso-bar-fill {
+    background: linear-gradient(90deg, #e83e8c, #1d9e75);
+    height: 100%;
+    border-radius: 6px;
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  .progresso-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .pstep {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .pstep.ativo { color: #e83e8c; font-weight: 600; }
+</style>
+
+<div class="guia-wrap">
+
+  <div class="hero">
+    <div class="hero-badge">Copa da Minha Vida 2026</div>
+    <h1>O Jogo Começa<br><span>quando você decide entrar</span></h1>
+    <p class="hero-sub">Um convite para percorrer seu álbum — no seu ritmo, com toda a verdade que você merece.</p>
+    <div class="hero-coracoes">♡ ♡ ♡</div>
+  </div>
+
+  <div class="intro-card">
+    <p>Você não estava no encontro ao vivo — e tudo bem. <strong>O jogo da sua vida não tem hora marcada para começar.</strong> Ele começa quando você decide que está pronta(o).</p>
+    <p>Cada página do seu álbum guarda uma pergunta, uma parte de você que está esperando ser reconhecida. Não há resposta certa. Há apenas a <strong>sua verdade</strong>.</p>
+    <p>Pense assim: imagina que você chegou atrasada à festa, mas a anfitriã guardou o seu lugar. <strong>Esse álbum é o seu lugar guardado.</strong></p>
+  </div>
+
+  <div class="progresso-wrap" id="progressoBox">
+    <div class="progresso-label">Seu caminho pelo álbum — <span id="progressoTexto">0 de 6 etapas</span></div>
+    <div class="progresso-bar-bg">
+      <div class="progresso-bar-fill" id="progressoFill"></div>
+    </div>
+    <div class="progresso-steps">
+      <span class="pstep" id="ps0">Preparação</span>
+      <span class="pstep" id="ps1">Convocação</span>
+      <span class="pstep" id="ps2">Treino</span>
+      <span class="pstep" id="ps3">Virada</span>
+      <span class="pstep" id="ps4">Final</span>
+      <span class="pstep" id="ps5">Troféu</span>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="dot dot-rosa"></span>
+    Antes de abrir o álbum — prepare o campo
+  </div>
+
+  <div class="aviso-box">
+    <span class="aviso-icon">🕯️</span>
+    <div class="aviso-text">
+      <strong>Ritual de entrada:</strong> Escolha um momento em que ninguém vai te interromper. Pode ser 30 minutos ou 3 horas — você decide o ritmo. Coloque uma música suave, pegue um copo de água, respira fundo. <em>Você está prestes a se visitar.</em>
+    </div>
+  </div>
+
+  <div class="ritual-grid">
+    <div class="ritual-item">
+      <span class="ritual-icon">📱</span>
+      <div class="ritual-label">Abra o álbum</div>
+      <div class="ritual-desc">albumcopadaminhavida.vercel.app — tudo salva automaticamente no seu aparelho</div>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">📸</span>
+      <div class="ritual-label">Fotos à mão</div>
+      <div class="ritual-desc">Fotos suas, de família, de hoje e de outras épocas. Você vai precisar delas.</div>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">✏️</span>
+      <div class="ritual-label">Caneta e papel</div>
+      <div class="ritual-desc">Para rabiscar o que vier — às vezes a mão escreve mais rápido que a cabeça pensa.</div>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">💛</span>
+      <div class="ritual-label">Sem julgamento</div>
+      <div class="ritual-desc">Não existe resposta bonita. Existe a sua. Ela é a única que importa aqui.</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="dot dot-teal"></span>
+    Percorra seu álbum — etapa por etapa
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 0)">
+    <div class="etapa-header">
+      <div class="etapa-num num-rosa">1</div>
+      <div class="etapa-info">
+        <div class="etapa-paginas">Páginas 1, 2 e 3</div>
+        <div class="etapa-titulo">A Convocação — quem você é nesse jogo</div>
+        <div class="etapa-desc">Capa, abertura e sua Credencial oficial.</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>Comece observando a capa. Repare no nome: não é "A Copa da Vida". É "A Copa da <em>Minha</em> Vida". O troféu já tem o seu nome gravado. Ele só está esperando você entrar em campo.</p>
+      <p>A <strong>Credencial</strong> (página 3) é o seu documento oficial nessa jornada. Preencha com honestidade — não com a versão que você acha que deveria ser, mas com a versão que você é agora.</p>
+      <div class="pergunta-box">✦ Minha palavra de poder: aquela que, repetida no espelho de manhã, mudaria o seu dia. Uma só palavra.</div>
+      <div class="pergunta-box">✦ Maior medo que vou vencer: nomear o medo já tira metade da força dele.</div>
+      <div class="dica-box"><strong>Dica de imagem:</strong> Na Credencial, coloque uma foto sua de AGORA — não precisa ser foto de rede social. Precisa ser verdadeira.</div>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 1)">
+    <div class="etapa-header">
+      <div class="etapa-num num-teal">2</div>
+      <div class="etapa-info">
+        <div class="etapa-paginas">Páginas 4, 5 e 6</div>
+        <div class="etapa-titulo">As Figurinhas — convocar suas partes de volta</div>
+        <div class="etapa-desc">O mapa da jornada, as 9 qualidades e as 2 figurinhas raras.</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>No futebol o técnico convoca os jogadores. Aqui, <strong>você convoca suas partes de volta</strong>. São nove figurinhas — cada uma é uma parte sua que talvez tenha sumido, mas está sendo chamada de volta ao time.</p>
+      <p>Para cada figurinha (Coragem, Pertencimento, Voz, Cura, Movimento, Ancestralidade, Prosperidade, Liderança, Criança Interior), escolha uma <strong>imagem que fale para você</strong> — uma foto sua, um símbolo, uma flor, a mão da avó, o mar. Não existe imagem certa.</p>
+      <div class="pergunta-box">✦ Para cada qualidade: quando foi a última vez que essa parte de você apareceu? Onde você a sente mais viva?</div>
+      <div class="pergunta-box">✦ Figurinhas Raras (pág. 6): Merecimento e Liderança Emocional. Se você realmente acreditasse que merece, o que se permitiria pedir amanhã?</div>
+      <div class="dica-box"><strong>Se travar em uma imagem:</strong> qual foi a primeira que veio quando você leu o nome? É essa. Confie no primeiro impulso.</div>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 2)">
+    <div class="etapa-header">
+      <div class="etapa-num num-ouro">3</div>
+      <div class="etapa-info">
+        <div class="etapa-paginas">Páginas 7 e 8</div>
+        <div class="etapa-titulo">As Figurinhas do Meu Eu — o time completo</div>
+        <div class="etapa-desc">Você em 8 versões, e o escudo da sua vida.</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>Aqui você escala o time completo: Eu Corajosa, Eu Amorosa, Eu Livre, Eu Próspera, Eu Criança, Eu Ancestral, Eu Líder, Eu Inteira. <strong>Você não precisa se completar — você já é inteira.</strong> Essas figuras não representam partes faltando. Representam dimensões de você que merecem ser vistas.</p>
+      <div class="pergunta-box">✦ Olhando os oito, qual está mais forte hoje? Qual anda esquecido, precisando de mais jogo?</div>
+      <p>O <strong>Escudo</strong> (página 8) é o símbolo da sua vida: Meu maior poder / Minha origem / O que me move / Meu destino. Pense como uma árvore: as raízes são sua origem, o tronco é sua força, os galhos são o que te move, os frutos são seu destino.</p>
+      <div class="dica-box"><strong>Para a imagem do escudo:</strong> pode ser uma foto sua, um símbolo (animal, elemento, objeto), ou até um desenho feito à mão, fotografado. Imperfeito e seu vale mais que perfeito de banco de imagem.</div>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 3)">
+    <div class="etapa-header">
+      <div class="etapa-num num-azul">4</div>
+      <div class="etapa-info">
+        <div class="etapa-paginas">Páginas 9 e 10</div>
+        <div class="etapa-titulo">A Virada do Jogo — encarar o adversário de frente</div>
+        <div class="etapa-desc">Seu relacionamento consigo e o placar da sua vida.</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>A página 9 é um raio-X do seu relacionamento mais longo: o que você tem consigo mesma. Nas colunas <em>Antes</em> e <em>Depois</em>, escreva como estava e como está (ou quer que esteja) em Confiança, Voz, Amor Próprio e Vida. <strong>O "depois" não precisa ser chegada perfeita</strong> — pode ser a direção. A distância entre as colunas é a prova de que você se moveu.</p>
+      <p>Na página 10, encare os adversários internos sem culpa: Autossabotagem, Medo, Culpa, Desconexão, Padrões, Falta de Pertencimento. Dê uma nota de 1 a 10 para cada — quanto ainda te domina.</p>
+      <div class="pergunta-box">✦ Isso é um mapa, não um tribunal. Não é para se julgar. Dar nome ao adversário já tira poder dele.</div>
+      <div class="dica-box"><strong>Se emocionar:</strong> pode. Feche os olhos, respire. Volte quando estiver pronta. Não há pressa aqui.</div>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 4)">
+    <div class="etapa-header">
+      <div class="etapa-num num-roxa">5</div>
+      <div class="etapa-info">
+        <div class="etapa-paginas">Páginas 11, 12 e 13</div>
+        <div class="etapa-titulo">As Promessas e a Carta — o que você diz para si mesma</div>
+        <div class="etapa-desc">7 promessas de campo, a carta mais importante e o Hall dos Campeões.</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>As <strong>7 promessas</strong> (página 11) não são para os outros — são para você. Use os começos de frase que ajudam: "Eu prometo parar de…", "Eu prometo começar a…", "Eu prometo me permitir…". Se daqui a um ano você cumprisse só UMA, qual mudaria mais a sua vida? Comece por ela.</p>
+      <p>A <strong>Carta da Minha Vida</strong> (página 12) é a página mais íntima. Escreva para você mesma — não para a mãe, o ex, o filho. Para VOCÊ. Pode ser carta de perdão, agradecimento, reencontro ou promessa.</p>
+      <div class="pergunta-box">✦ Querida eu: O que você precisa se dizer e nunca disse? Do que quer se orgulhar? O que quer se perdoar?</div>
+      <p>No <strong>Hall dos Campeões</strong> (página 13), coloque fotos de quem te inspira e sustenta. Não precisa preencher todos os 12 espaços hoje — deixe espaço para quem ainda vai chegar.</p>
+      <div class="dica-box"><strong>Sugestão de ritual:</strong> Escreva a carta com música suave de fundo. Ao terminar, leia em voz alta para você mesma. Sinta o que as palavras fazem no seu corpo.</div>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 5)">
+    <div class="etapa-header">
+      <div class="etapa-num num-coral">6</div>
+      <div class="etapa-info">
+        <div class="etapa-paginas">Páginas 14 ao 18</div>
+        <div class="etapa-titulo">A Grande Final — o troféu é você</div>
+        <div class="etapa-desc">Sua maior vitória, o troféu, a medalha e a certificação.</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p><strong>Minha Maior Vitória</strong> (página 14): registre o momento em que você se tornou campeã de si mesma. Pode ser uma virada que já aconteceu — uma decisão, uma cura — ou o momento de AGORA, ao preencher este álbum. A data da sua virada pode ser hoje.</p>
+      <div class="pergunta-box">✦ Diga em voz alta: "EU POSSO. EU CONSIGO." De novo, mais forte. Esse é o apito final.</div>
+      <p>As páginas seguintes são para sentir, não para preencher. O troféu desta Copa tem um nome: <strong>Pertencer a Si</strong>. Durante muito tempo a gente pertence a todo mundo — pais, filhos, trabalho, expectativas. Pertencer a si é o troféu mais difícil — porque ninguém entrega, você conquista.</p>
+      <p>A página 17 está reservada para a sua certificação de campeã de si mesma. Ela vai esperar você. Quando olhar para trás e ver o quanto andou, ela vai estar aqui para celebrar.</p>
+      <div class="dica-box"><strong>Encerramento:</strong> Coloque a mão no peito. Respira. Esse gesto é a sua medalha. Use-o sempre que precisar lembrar: você é alguém que se escolheu.</div>
+    </div>
+  </div>
+
+  <div class="aviso-box" style="margin-top: 2rem;">
+    <span class="aviso-icon">💾</span>
+    <div class="aviso-text">
+      <strong>Lembre-se de salvar!</strong> O álbum salva automaticamente no seu aparelho enquanto você preenche. Ao terminar, toque em <em>Salvar / Imprimir</em> para guardar o seu PDF — esse registro é seu para sempre.
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 2rem;">
+    <span class="dot dot-ouro"></span>
+    Perguntas que podem surgir no caminho
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 6)">
+    <div class="etapa-header">
+      <div class="etapa-info">
+        <div class="etapa-titulo">"Preciso preencher tudo de uma vez?"</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>Não. Você pode fazer em etapas, ao longo de dias. O álbum salva no seu aparelho e fica esperando você. Como num álbum de figurinhas de verdade — você vai completando aos poucos, conforme as peças chegam.</p>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 7)">
+    <div class="etapa-header">
+      <div class="etapa-info">
+        <div class="etapa-titulo">"E se eu não tiver fotos para alguma figurinha?"</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>Use qualquer imagem que ressoe com você. Pode ser uma foto do mar, de uma flor, de um pôr do sol que representa essa qualidade. O que importa não é a imagem perfeita — é a que fala com a sua alma naquele momento.</p>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 8)">
+    <div class="etapa-header">
+      <div class="etapa-info">
+        <div class="etapa-titulo">"Posso compartilhar meu álbum com alguém?"</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>O álbum é seu e só seu. Ninguém além de você vê o que está escrito e colado nele. Se quiser compartilhar com alguém de confiança, é uma escolha sua. Se preferir guardar para si, também é uma escolha sua — e igualmente válida.</p>
+    </div>
+  </div>
+
+  <div class="etapa-card" onclick="toggleEtapa(this, 9)">
+    <div class="etapa-header">
+      <div class="etapa-info">
+        <div class="etapa-titulo">"E se eu me emocionar muito?"</div>
+      </div>
+      <span class="etapa-expand">+</span>
+    </div>
+    <div class="etapa-detail">
+      <p>Então o álbum está fazendo o seu trabalho. As páginas 3 (medo na Credencial), 10 (os adversários internos) e 12 (a Carta) costumam mexer fundo. Se precisar, feche o álbum, tome água, dê uma volta. Quando estiver pronta, ele vai estar aqui.</p>
+    </div>
+  </div>
+
+  <div class="encerramento">
+    <p>"Você não vai preencher um álbum. Você vai se reencontrar, <strong>página por página</strong>."</p>
+    <p>Esse álbum fica com você. Sempre que duvidar de quem é, abra ele. Releia sua carta. Olhe seu escudo. Lembre do <strong>"eu posso, eu consigo"</strong>.</p>
+    <p style="font-size: 13px; color: rgba(255,255,255,0.5); font-style: normal; margin-top: 1rem;">A Copa da Minha Vida™ · Eliane Simões & Liliana Pinheiro da Rosa · 2026</p>
+    <button class="btn-acessar" onclick="window.open('https://albumcopadaminhavida.vercel.app/', '_blank')">Abrir meu álbum ↗</button>
+  </div>
+
+</div>
+
+<script>
+  let abertasCount = 0;
+  const totalEtapas = 6;
+
+  function toggleEtapa(card, idx) {
+    const detail = card.querySelector('.etapa-detail');
+    const expand = card.querySelector('.etapa-expand');
+    const isOpen = detail.classList.contains('open');
+
+    if (isOpen) {
+      detail.classList.remove('open');
+      expand.textContent = '+';
+      expand.style.transform = '';
+    } else {
+      detail.classList.add('open');
+      expand.textContent = '×';
+      expand.style.transform = 'rotate(45deg)';
+      if (idx < totalEtapas) {
+        atualizarProgresso(idx + 1);
+      }
+    }
+  }
+
+  function atualizarProgresso(etapaAtual) {
+    const pct = Math.min((etapaAtual / totalEtapas) * 100, 100);
+    document.getElementById('progressoFill').style.width = pct + '%';
+    document.getElementById('progressoTexto').textContent = etapaAtual + ' de ' + totalEtapas + ' etapas';
+
+    const nomes = ['ps0','ps1','ps2','ps3','ps4','ps5'];
+    nomes.forEach((id, i) => {
+      const el = document.getElementById(id);
+      el.classList.toggle('ativo', i < etapaAtual);
+    });
+  }
+</script>
